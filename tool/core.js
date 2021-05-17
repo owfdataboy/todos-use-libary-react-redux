@@ -21,10 +21,11 @@ export function createStore(reducer) {
         },
         connect(selector = (state) => state) {
             return (component) =>
-                (props, ...args) =>
-                    component(
+                (props, ...args) => {
+                    return component(
                         Object.assign({}, props, selector(state), ...args)
                     );
+                };
         },
         dispatch(action, ...args) {
             state = reducer(state, action, args);

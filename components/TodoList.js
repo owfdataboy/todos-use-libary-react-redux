@@ -17,7 +17,7 @@ function TodoList({ todos, filter, filters }) {
             <ul class="todo-list">
                 ${todos
                     .filter(filters[filter])
-                    .map((todo, index) => TodoItem(todo, index))}
+                    .map((todo, index) => TodoItem(todo, { index }))}
             </ul>
         </section>
     `;

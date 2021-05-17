@@ -26,7 +26,13 @@ function Footer({ todos, filter, filters }) {
                     `
                 )}
             </ul>
-            <button class="clear-completed">Clear completed</button>
+            ${todos.filter(filters["completed"]).length > 0 &&
+            `<button 
+                    class="clear-completed"
+                    onclick="dispatch('DELETE_COMPLETED')"
+                    >
+                    Clear completed
+                </button>`}
         </footer>
     `;
 }

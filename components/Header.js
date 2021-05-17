@@ -3,7 +3,7 @@ import html from "../tool/core.js";
 function Header() {
     return html`
         <header class="header">
-            <h1>todos</h1>
+            <h1>Todos</h1>
             <input
                 class="new-todo"
                 placeholder="What needs to be done?"

@@ -8,6 +8,7 @@ const init = {
         active: (todo) => !todo.completed,
         completed: (todo) => todo.completed,
     },
+    indexEditing: -1,
 };
 
 const actions = {
@@ -35,6 +36,22 @@ const actions = {
     },
     SWITCH(state, [type]) {
         state.filter = type;
+    },
+    DELETE_COMPLETED(state) {
+        state.todos = state.todos.filter((todo) => !todo.completed);
+        Storage.set(state.todos);
+    },
+    END_EDIT(state, [value, index]) {
+        state.todos.forEach((todo, i) => {
+            if (i === index) {
+                todo.title = value;
+            }
+        });
+        state.indexEditing = -1;
+        Storage.set(state.todos);
+    },
+    START_EDITING(state, [index]) {
+        state.indexEditing = index;
     },
 };
 
