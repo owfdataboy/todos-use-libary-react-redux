@@ -23,7 +23,7 @@ export function createStore(reducer) {
             return (component) =>
                 (props, ...args) =>
                     component(
-                        Object.create({}, props, selector(state), ...args)
+                        Object.assign({}, props, selector(state), ...args)
                     );
         },
         dispatch(action, ...args) {
